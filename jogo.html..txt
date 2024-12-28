@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio Bíblico e de Relacionamento</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .question {
+            margin-bottom: 15px;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .result {
+            display: none;
+            margin-top: 10px;
+            padding: 5px;
+            border-radius: 3px;
+        }
+        .result.correct {
+            color: green;
+            background-color: #e6ffe6;
+        }
+        .result.incorrect {
+            color: red;
+            background-color: #ffe6e6;
+        }
+        .button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Desafio Bíblico e de Relacionamento</h1>
+    <p>Responda às perguntas abaixo. Se errar, a resposta correta aparecerá automaticamente!</p>
+
+    <!-- Perguntas Bíblicas -->
+    <div id="biblical-questions">
+        <h2>Perguntas Bíblicas</h2>
+        <div class="question">
+            <p><strong>1. Quem construiu a arca?</strong></p>
+            <input type="text" id="q1" placeholder="Sua resposta">
+            <button class="button" onclick="checkAnswer('q1', 'Noé')">Enviar</button>
+            <div class="result" id="q1-result"></div>
+        </div>
+
+        <div class="question">
+            <p><strong>2. Onde nasceu Jesus?</strong></p>
+            <input type="text" id="q2" placeholder="Sua resposta">
+            <button class="button" onclick="checkAnswer('q2', 'Belém')">Enviar</button>
+            <div class="result" id="q2-result"></div>
+        </div>
+
+        <div class="question">
+            <p><strong>3. Quem foi o homem mais forte da Bíblia?</strong></p>
+            <input type="text" id="q3" placeholder="Sua resposta">
+            <button class="button" onclick="checkAnswer('q3', 'Sansão')">Enviar</button>
+            <div class="result" id="q3-result"></div>
+        </div>
+
+        <!-- Adicione mais perguntas aqui -->
+    </div>
+
+    <!-- Perguntas de Relacionamento -->
+    <div id="relationship-questions">
+        <h2>Perguntas de Relacionamento</h2>
+        <div class="question">
+            <p><strong>1. Qual foi a primeira coisa que você notou em mim?</strong></p>
+            <input type="text" id="r1" placeholder="Sua resposta">
+            <button class="button" onclick="relationshipAnswer('r1')">Enviar</button>
+            <div class="result" id="r1-result"></div>
+        </div>
+
+        <div class="question">
+            <p><strong>2. Onde foi nosso primeiro encontro?</strong></p>
+            <input type="text" id="r2" placeholder="Sua resposta">
+            <button class="button" onclick="relationshipAnswer('r2')">Enviar</button>
+            <div class="result" id="r2-result"></div>
+        </div>
+
+        <!-- Adicione mais perguntas aqui -->
+    </div>
+
+    <script>
+        function checkAnswer(questionId, correctAnswer) {
+            const userAnswer = document.getElementById(questionId).value.trim().toLowerCase();
+            const resultDiv = document.getElementById(`${questionId}-result`);
+
+            if (userAnswer === correctAnswer.toLowerCase()) {
+                resultDiv.textContent = "Correto!";
+                resultDiv.className = "result correct";
+            } else {
+                resultDiv.textContent = `Incorreto. A resposta correta é: ${correctAnswer}`;
+                resultDiv.className = "result incorrect";
+            }
+            resultDiv.style.display = "block";
+        }
+
+        function relationshipAnswer(questionId) {
+            const resultDiv = document.getElementById(`${questionId}-result`);
+            resultDiv.textContent = "Resposta enviada. Avaliem juntos se está correta!";
+            resultDiv.className = "result correct";
+            resultDiv.style.display = "block";
+        }
+    </script>
+</body>
+</html>
